@@ -1,0 +1,22 @@
+
+
+Entrega Prueba Tecnica.
+
+1.- El Backup de la base de datos esta anexo en el proyecto.
+
+RETO #1
+
+Para el reto 1 el servicio se levanta de la siguiente forma
+npm run dev
+URL: http://localhost:4001/consumo
+
+RETO #2
+
+El servicio que corre cada 10 min se ejecuta de la siguiente forma
+
+npm run servicio
+
+Para revisar la lista con los filtros deben subir el server web
+npm run dev
+URL: http://localhost:4001/lista
+
