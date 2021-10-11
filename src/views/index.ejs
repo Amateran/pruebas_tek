@@ -1,0 +1,81 @@
+<%- layout('layouts/main.ejs')%>
+
+  <div class="row mt-5">
+    <div class="col-md-8">
+      <table class="table table-bordered bg-light table-hover">
+        <thead>
+          <tr class="headings">
+            <td>Id de Caso</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% datos.forEach(function (dato) { %>
+            <tr id="id_<%= dato.iddatos %>">
+              <!-- id is necessary for sorting -->
+              <td>
+                <%= dato.id_de_caso %>
+              </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <form action="/lista" method="get">
+            <div class="col-md-12">
+              <div class="col-md-12">
+                <label>Estado:</label>
+                <select name="estado" id="estado">
+                  <option value='Todos'>Todos</option>
+                  <% estadoList.forEach(function (estado) {  var selected=( estado.estado==param.estado ) ? "selected" : "" ; %>
+                    <option value='<%= estado.estado %>' <%=selected %>>
+                      <%= estado.estado %>
+                    </option>
+                    <% }) %>
+                </select>
+              </div>
+              <div class="col-md-12">
+                <label>Genero:</label>
+                <select name="sexo" id="sexo">
+                  <option value='Todos'>Todos</option>
+                  <% generoList.forEach(function (genero) { var selected=( genero.sexo==param.sexo ) ? "selected" : "" ;
+                    %>
+                    <option value='<%= genero.sexo %>' <%=selected %>>
+                      <%= genero.sexo %>
+                    </option>
+                    <% }) %>
+                </select>
+              </div>
+              <div class="col-md-12">
+                <label>Ciudad:</label>
+                <select class="col-md-6" name="ciudad_municipio_nom" id="ciudad_municipio_nom">
+                  <option value='Todos'>Todos</option>
+                  <% ciudadList.forEach(function ( ciudad) { var selected=(
+                    ciudad.ciudad_municipio_nom==param.ciudad_municipio_nom ) ? "selected" : "" ; %>
+                    <option value='<%= ciudad.ciudad_municipio_nom %>' <%=selected %>>
+                      <%= ciudad.ciudad_municipio_nom %>
+                    </option>
+                    <% }) %>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-2">Filtrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .product-highlight {
+      background: red;
+    }
+
+    tbody tr:hover {
+      cursor: move;
+    }
+  </style>
+
+  </div>
